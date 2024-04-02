@@ -6,9 +6,9 @@ Assignment Name: Project 8
 */
 
 #include <iostream>
-using namespace std;
-
 #include "main.h"
+
+using namespace std;
 
 ListT::ListT() {
   head = NULL;
@@ -21,7 +21,7 @@ ListT::~ListT() {
   while (current != NULL) {
     node *temp = current;
     current = current->next;
-    //delete temp;
+    delete temp;
   }
 
   head = NULL; // Set head to NULL
