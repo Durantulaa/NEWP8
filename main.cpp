@@ -21,7 +21,7 @@ ListT::~ListT() {
   while (current != NULL) {
     node *temp = current;
     current = current->next;
-    delete temp;
+    //delete temp;
   }
 
   head = NULL; // Set head to NULL

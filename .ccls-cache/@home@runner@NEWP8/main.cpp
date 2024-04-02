@@ -21,7 +21,7 @@ ListT::~ListT() {
   while (current != NULL) {
     node *temp = current;
     current = current->next;
-    delete temp;
+    //delete temp;
   }
 
   head = NULL; // Set head to NULL
@@ -180,5 +180,8 @@ void ListT::Print() const { //
 // write tests for remaining functions
 // setup github student and repos for class
 // make sure to include comments each step
-
 // git push -u origin main
+// git add .
+// git commit -m "message"
+// git push (on wsl terminal)
+//
