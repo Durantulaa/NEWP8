@@ -180,5 +180,7 @@ void ListT::Print() const { //
 // write tests for remaining functions
 // setup github student and repos for class
 // make sure to include comments each step
-// now I can type some code
 // git push -u origin main
+// git commit -m "message"
+// git push (on wsl terminal)
+//
