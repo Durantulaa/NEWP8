@@ -6,8 +6,22 @@ using namespace std;
   int main() {
     // Create a static list
     ListT lst;
+    
+    for (int i = 0; i < 5; i++)
+      lst.PutItemH(i);
+    lst.Print();
+    cout << endl;
+    lst.PutItemH(2);
+    lst.PutItemT(2);
+    lst.PutItemT(2);
+    lst.Print();
+    cout << endl;
+    lst.DeleteItem(2);
+    lst.Print();
 
-    cout << "Test PutItemH and Print" << endl;
+    
+
+   /*cout << "Test PutItemH and Print" << endl;
     cout << "Correct if output is 4, 3, 2, 1, 0 on subsequent lines" << endl;
     for (int i = 0; i < 5; i++)
       lst.PutItemH(i);
@@ -83,6 +97,6 @@ using namespace std;
     cout << "Occurrences of 1: " << lst1.FindItem(1) << endl;
     cout << "Occurrences of 0: " << lst1.FindItem(0) << endl;
     cout << endl;
-    
+    */
   return 0;
 }

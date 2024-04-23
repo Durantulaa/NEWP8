@@ -5,8 +5,8 @@ Date Submitted: 3/26/2024
 Assignment Name: Project 8
 */
 
-#include <iostream>
 #include "main.h"
+#include <iostream>
 
 using namespace std;
 
@@ -95,21 +95,20 @@ void ListT::DeleteItemT() {
 }
 
 void ListT::DeleteItemH() {
-    if (head != NULL) // If the list is not empty
-    {
-        node *tmp = head; // Remember the first item
-        head = head->next; // Update the head to the second item
+  if (head != NULL) // If the list is not empty
+  {
+    node *tmp = head;  // Remember the first item
+    head = head->next; // Update the head to the second item
 
-        if (head == NULL) {
-            tail = NULL; // Update tail when list becomes empty
-        }
-
-        delete tmp;    // Delete the first item
-        length--;      // Decrease the length of the list
-    } 
-    else { // If the list is empty
-        cout << "Head is deleted" << endl; // Print a message
+    if (head == NULL) {
+      tail = NULL; // Update tail when list becomes empty
     }
+
+    delete tmp;                        // Delete the first item
+    length--;                          // Decrease the length of the list
+  } else {                             // If the list is empty
+    cout << "Head is deleted" << endl; // Print a message
+  }
 }
 
 /*
@@ -119,32 +118,35 @@ post: deletes all nodes that store target.  Returns
 */
 int ListT::DeleteItem(const itemType target) {
   int dCount = 0;
-  node *curr = head; // Start at the beginning of the list
-  node *prev = NULL; // Initialize a pointer to the previous item
-  node *tmp = curr;
+  node *curr = head;
+  node *prev = nullptr;
 
-  if (prev == NULL) {
-    tail = NULL;
-  }
+  while (curr != nullptr) {
+    if (curr->item == target) {
+      if (curr == head) {
+        head = curr->next;
+      } else {
+        prev->next = curr->next;
+      }
 
-  else if (head == NULL) {
-    cout << "List is empty" << endl;
-    return 0;
-  }
+      if (curr == tail) {
+        tail = prev;
+      }
+      node *tmp = curr;
 
-  while (curr != NULL) {
-    if (curr->item == target) { // If the current item matches the target
-      curr = curr->next;        // Move to the next item
+      curr = curr->next;
       delete tmp;
-      dCount++;    // Increment the count of deleted items
-    } else {       // If the target is after the beginning
-      prev = curr; // Move to the next item
+      dCount++;
+    } else {
+      prev = curr;
       curr = curr->next;
     }
   }
 
   return dCount;
-} // prev->next = curr->next; // Update the link to skip the current item
+}
+
+ // prev->next = curr->next; // Update the link to skip the current item
 
 int ListT::FindItem(const itemType target) const {
   node *head = new node;
