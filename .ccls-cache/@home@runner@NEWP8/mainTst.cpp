@@ -7,18 +7,15 @@ using namespace std;
     // Create a static list
     ListT lst;
     
-    for (int i = 0; i < 5; i++)
-      lst.PutItemH(i);
-    lst.Print();
-    cout << endl;
+    lst.PutItemH(1);
+    lst.PutItemT(2);
+    lst.PutItemT(2);
     lst.PutItemH(2);
-    lst.PutItemT(2);
-    lst.PutItemT(2);
     lst.Print();
     cout << endl;
     lst.DeleteItem(2);
     lst.Print();
-
+    
     
 
    /*cout << "Test PutItemH and Print" << endl;

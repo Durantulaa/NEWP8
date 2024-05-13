@@ -18,7 +18,8 @@ ListT::ListT() {
 
 ListT::~ListT() {
   node *current = head;
-  while (current != NULL) {
+  while (current != NULL) 
+  {
     node *temp = current;
     current = current->next;
     delete temp;
@@ -28,8 +29,6 @@ ListT::~ListT() {
   tail = NULL; // Set tail to NULL
   length = 0;
 
-  cout << "I'm the destructor" << endl;
-  Print();
 }
 
 void ListT::PutItemH(itemType item) { //
@@ -44,15 +43,21 @@ void ListT::PutItemH(itemType item) { //
   length++;
 }
 
-void ListT::PutItemT(const itemType itemIn) { //
-  length = 0;
+void ListT::PutItemT(const itemType itemIn) { //create new node
   node *tmp = new node;
+  // Assign the item to the new node
   tmp->item = itemIn;
-  tmp->next = tail;
-
-  tail = tmp;
+  //Set the next pointer of the new node to NULL since it is the new tail.
+  tmp->next = NULL;
+  //If the list is empty, set the head and tail pointers to the new node.
   if (length == 0)
     tail = tmp;
+  //If the list is not empty, set the next pointer of the current tail to the new node.
+  else
+    tail->next = tmp;
+  //Set the tail pointer to the new node.
+  tail = tmp;
+  //Increment the length of the list.
   length++;
 }
 
@@ -119,14 +124,14 @@ post: deletes all nodes that store target.  Returns
 int ListT::DeleteItem(const itemType target) {
   int dCount = 0;
   node *curr = head;
-  node *prev = nullptr;
+  node *prev = NULL;
 
-  while (curr != nullptr) {
-    if (curr->item == target) {
-      if (curr == head) {
+  while (curr != NULL) {
+    if (curr->item == target) { //if curr mathes target
+      if (curr == head) { // move to head
         head = curr->next;
       } else {
-        prev->next = curr->next;
+        prev->next = curr->next; //else if at end of list 
       }
 
       if (curr == tail) {
@@ -135,10 +140,10 @@ int ListT::DeleteItem(const itemType target) {
       node *tmp = curr;
 
       curr = curr->next;
-      delete tmp;
-      dCount++;
-    } else {
-      prev = curr;
+      delete tmp; // get rid of given position
+      dCount++; // Increment count of deleted item 
+    } else { //If the target is after the beginning 
+      prev = curr; //Move to the next item
       curr = curr->next;
     }
   }
